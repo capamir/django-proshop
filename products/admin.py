@@ -12,3 +12,7 @@ class ReviewAdmin(admin.ModelAdmin):
     list_display = ('user', 'name', 'rating', 'created')
     raw_id_fields = ('user', 'product')
     search_fields = ('name',)
+
+
+admin.site.register(Product, ProductAdmin)
+admin.site.register(Review, ReviewAdmin)
