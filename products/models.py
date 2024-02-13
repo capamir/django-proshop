@@ -1,9 +1,9 @@
 from django.db import models
-from users.models import User
+from users.models import User, Teacher
 import uuid
 # Create your models here.
 class Product(models.Model):
-    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    user = models.ForeignKey(Teacher, on_delete=models.SET_NULL, null=True)
     name = models.CharField(max_length=200, null=True, blank=True)
     image = models.ImageField(null=True, blank=True,
                               default='/placeholder.png')
