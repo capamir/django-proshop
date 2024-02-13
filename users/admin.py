@@ -1,13 +1,17 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from .forms import UserCreationForm, UserChangeForm
-from .models import User, OtpCode
+from .models import User, OtpCode, Teacher
 
 
 @admin.register(OtpCode)
 class OtpCodeAdmin(admin.ModelAdmin):
 	list_display = ('phone_number', 'code', 'created')
 
+class TeacherAdmin(admin.ModelAdmin):
+    list_display = ('name', 'created')
+    raw_id_fields = ('user',)
+    search_fields = ('name',)
 
 class UserAdmin(BaseUserAdmin):
 	form = UserChangeForm
@@ -38,4 +42,6 @@ class UserAdmin(BaseUserAdmin):
 		return form
 
 
+
 admin.site.register(User, UserAdmin)
+admin.site.register(Teacher, TeacherAdmin)
